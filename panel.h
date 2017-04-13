@@ -158,10 +158,6 @@ private:
 
     Image* image;
 
-    // For thesting themes
-    bool testing;
-    std::string themedir;
-
     // Session handling
     std::string session_name;
     std::string session_exec;
