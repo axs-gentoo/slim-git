@@ -16,7 +16,7 @@
 
 using namespace std;
 
-Panel::Panel(Display* dpy, int scr, Window root, Cfg* config, const string& themedir, PanelType panel_mode)
+Panel::Panel(Display* dpy, int scr, Window root, Cfg* config, const string& themebase, const string& themeName, PanelType panel_mode)
     : Dpy(dpy), Scr(scr), Root(root), cfg(config), mode(panel_mode), session_name(""), session_exec(""),
       // Load properties from config / theme
       input_name(cfg->getIntOption("input_name_x"), cfg->getIntOption("input_name_y")),
@@ -76,6 +76,7 @@ Panel::Panel(Display* dpy, int scr, Window root, Cfg* config, const string& them
     }
 
     // Load panel and background image
+    string themedir = themebase + themeName;
     string panelpng = "";
     panelpng = panelpng + themedir +"/panel.png";
     image = new Image;
@@ -86,8 +87,7 @@ Panel::Panel(Display* dpy, int scr, Window root, Cfg* config, const string& them
         if (!loaded) {
             logStream << APPNAME
                  << ": could not load panel image for theme '"
-                 << basename((char*)themedir.c_str()) << "'"
-                 << endl;
+                 << themeName << "'" << endl;
             exit(ERR_EXIT);
         }
     }
@@ -103,8 +103,7 @@ Panel::Panel(Display* dpy, int scr, Window root, Cfg* config, const string& them
             if (!loaded){
                 logStream << APPNAME
                      << ": could not load background image for theme '"
-                     << basename((char*)themedir.c_str()) << "'"
-                     << endl;
+                     << themeName << "'" << endl;
                 exit(ERR_EXIT);
             }
         }

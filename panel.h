@@ -24,10 +24,6 @@
 #include <iostream>
 #include <string>
 
-#ifdef NEEDS_BASENAME
-#include <libgen.h>
-#endif
-
 #include "switchuser.h"
 #include "log.h"
 #include "image.h"
@@ -67,7 +63,8 @@ public:
     };
 
     Panel(Display* dpy, int scr, Window root, Cfg* config,
-          const std::string& themed, PanelType panel_mode);
+          const std::string& themed, const std::string& themeName,
+          PanelType panel_mode);
     ~Panel();
     void OpenPanel();
     void ClosePanel();
@@ -160,10 +157,6 @@ private:
     Pixmap PanelPixmap;
 
     Image* image;
-
-    // For thesting themes
-    bool testing;
-    std::string themedir;
 
     // Session handling
     std::string session_name;

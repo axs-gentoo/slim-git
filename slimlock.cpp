@@ -180,7 +180,7 @@ int main(int argc, char **argv) {
 	// configuration
 	HideCursor();
 
-	loginPanel = new Panel(dpy, scr, win, cfg, themedir, Panel::Mode_Lock);
+	loginPanel = new Panel(dpy, scr, win, cfg, themebase, themeName, Panel::Mode_Lock);
 
 	int ret = pam_start(APPNAME, loginPanel->GetName().c_str(), &conv, &pam_handle);
 	// If we can't start PAM, just exit because slimlock won't work right
