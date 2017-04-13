@@ -218,7 +218,6 @@ endif(BUILD_SLIMLOCK)
 ####### install
 # slim
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin )
-install(TARGETS slimlock RUNTIME DESTINATION bin)
 
 if (BUILD_SHARED_LIBS)
 	set_target_properties(libslim PROPERTIES
